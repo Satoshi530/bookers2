@@ -1,0 +1,38 @@
+<div class= 'container'>
+  <div class= 'row'>
+    <div class= 'col-md-3'>
+<%= render 'new', book: @book, user: @user %>
+</div>
+  <div class='col-md-8 offset-md-1'>
+    <h1>Book detail</h1>
+      <table class= "table">
+          <tr>
+            <td>
+              <%= image_tag @books.user.get_profile_image(100,100) %></p>
+               <%= link_to user_path(@books.user.id) do %>
+              <%= @books.user.name %>
+              <% end %>
+            </td>
+            <td>
+              <%= link_to book_path(@books.id) do %>
+              <%= @books.title %>
+              <% end %>
+            </td>
+            <td>
+              <%= @books.body %>
+            </td>
+            <td>
+              <%if @books.user == current_user %>
+      <%= link_to edit_book_path(@books.id), class: 'btn btn-sm btn-success' do%>Edit
+        <% end %>
+            </td>
+            <td>
+               <%= link_to book_path(@books), method: :delete, class: 'btn btn-sm btn-danger' do%>Destroy
+          <% end %>
+            </td>
+            <% end %>
+          </tr>
+      </table>
+  </div>
+</div>
+</div>
